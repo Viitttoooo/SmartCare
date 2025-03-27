@@ -1,0 +1,21 @@
+# 通用忽略项
+.DS_Store
+*.log
+*.tmp
+.idea/
+.vscode/
+
+# --------- 前端相关 ---------
+src/web/smart_care_web/node_modules/ 
+src/web/smart_care_web/dist/  
+src/web/smart_care_web/.cache/
+
+# --------- 后端相关 ---------
+src/backend/smart_care/__pycache__/    
+src/backend/smart_care/.venv/          
+src/backend/smart_care/env/            
+src/backend/smart_care/*.sqlite
+src/backend/ml_train/.venv/
+src/backend/ml_train/__pycache__/
+src/backend/ml_train/env/            
+src/backend/ml_train/*.sqlite
