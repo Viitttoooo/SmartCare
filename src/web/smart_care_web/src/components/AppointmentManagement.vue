@@ -171,7 +171,7 @@
             v-model="appointmentForm.service"
             placeholder="选择服务"
             @change="handleServiceChange"
-            :disabled="!isStaff || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
+            :disabled="(!isStaff && isEdit) || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
           >
             <el-option
               v-for="service in services"
@@ -191,7 +191,7 @@
             value-format="YYYY-MM-DD"
             :disabled-date="disabledDate"
             @change="handleDateTimeChange"
-            :disabled="!isStaff || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
+            :disabled="(!isStaff && isEdit) || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
           />
         </el-form-item>
 
@@ -204,7 +204,7 @@
             format="HH:mm"
             placeholder="选择时间"
             @change="handleDateTimeChange"
-            :disabled="!isStaff || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
+            :disabled="(!isStaff && isEdit) || (isEdit && (appointmentForm.state === '已结束' || appointmentForm.state === '已取消'))"
           />
         </el-form-item>
 
@@ -643,7 +643,7 @@ const saveAppointment = async () => {
         satisfaction: appointmentForm.value.satisfaction
       };
     } else {
-      // 员工可以更新所有字段
+      // 构建基本的预约数据
       payload = {
         schedule_date: appointmentForm.value.schedule_date,
         schedule_time: formatTime(appointmentForm.value.schedule_time),

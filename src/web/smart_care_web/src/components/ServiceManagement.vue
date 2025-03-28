@@ -16,7 +16,7 @@
     </div>
 
     <!-- 操作区域 -->
-    <div class="operation-container">
+    <div class="operation-container" v-if="hasPermission">
       <el-button type="primary" @click="showAddDialog">
         添加服务
         <el-icon><Plus /></el-icon>
@@ -32,7 +32,7 @@
             {{ scope.row.duration }} 分钟
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200">
+        <el-table-column label="操作" width="200" v-if="hasPermission">
           <template #default="scope">
             <div class="button-group">
               <el-button 
@@ -124,6 +124,14 @@ const serviceForm = ref({
   duration: 60
 });
 
+// 获取用户信息
+const user = ref({});
+
+// 检查用户是否有权限进行增删改操作
+const hasPermission = computed(() => {
+  return user.value.role_name === '员工' || user.value.role_name === '管理员';
+});
+
 // 筛选后的服务列表
 const filteredServices = computed(() => {
   if (!searchQuery.value) return services.value;
@@ -208,8 +216,14 @@ const confirmDelete = async () => {
   }
 };
 
-// 组件挂载时获取数据
+// 组件挂载时获取数据和用户信息
 onMounted(async () => {
+  // 获取用户信息
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    user.value = JSON.parse(storedUser);
+  }
+  
   await fetchServices();
 });
 </script>

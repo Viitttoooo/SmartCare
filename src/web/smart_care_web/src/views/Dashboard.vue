@@ -64,7 +64,6 @@
             <span>预约管理</span>
           </el-menu-item>
           <el-menu-item 
-            v-if="user.role_name === '员工' || user.role_name === '管理员'"
             index="service-management"
             @click="currentView = 'service-management'"
           >
@@ -262,10 +261,7 @@ const currentComponent = computed(() => {
       }
       return null;
     case 'service-management':
-      if (user.value.role_name === '员工' || user.value.role_name === '管理员') {
-        return ServiceManagement;
-      }
-      return null;
+      return ServiceManagement;
     case 'appointment-management':
       return AppointmentManagement;
     case 'care-plan':
