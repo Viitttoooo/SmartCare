@@ -264,6 +264,15 @@
         <div class="smart-assessment">
           <div class="smart-assessment-header">
             <h3>智能评估结果</h3>
+            <el-button 
+              v-if="isStaff" 
+              type="primary" 
+              size="small" 
+              :loading="generatingAssessment"
+              @click="generateSmartAssessment(currentMetric.metric_id)"
+            >
+              {{ currentMetric.smart_assessment ? '重新生成' : '生成智能评估' }}
+            </el-button>
           </div>
           
           <div v-if="currentMetric.smart_assessment" class="markdown-content">

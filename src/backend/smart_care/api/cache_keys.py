@@ -17,5 +17,6 @@ RECIPES_DATA = 'recipes_data'
 DIET_PLANS = 'diet_plans_{}'
 PER_DIET_PLAN = 'diet_plan_{client_id}_{diet_date}'
 USERS_DATA = 'users_data'
-PLANS = 'plans'
+PLANS = 'plans'  # 用于报表展示
 ROLES = 'roles'
+APPOINTMENTS = 'appointments'  # 用于报表展示

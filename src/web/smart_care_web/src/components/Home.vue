@@ -69,6 +69,63 @@
           </div>
         </div>
 
+        <!-- 新图表展示区域 -->
+        <div class="section-container">
+          <div class="section-header">
+            <h2>满意度分析</h2>
+            <div class="section-actions">
+              <el-button size="small" type="primary" plain @click="refreshAllData">
+                <el-icon><Refresh /></el-icon>
+                刷新数据
+              </el-button>
+            </div>
+          </div>
+          
+          <!-- 预约满意度时间趋势图 -->
+          <div class="chart-row">
+            <div class="chart-container trend-chart">
+              <div class="chart-header">
+                <h3>预约满意度时间趋势</h3>
+                <div class="view-selector">
+                  <el-radio-group v-model="appointmentTimeView" size="small" @change="updateNewCharts">
+                    <el-radio-button label="daily">日视图</el-radio-button>
+                    <el-radio-button label="monthly">月视图</el-radio-button>
+                    <el-radio-button label="yearly">年视图</el-radio-button>
+                  </el-radio-group>
+                </div>
+              </div>
+              <div v-if="hasAppointmentAggregationData" ref="appointmentTimeChart" class="chart"></div>
+              <el-empty v-else description="暂无数据" />
+            </div>
+          </div>
+          
+          <!-- 服务满意度和护理计划满意度图 -->
+          <div class="chart-row">
+            <div class="chart-container trend-chart">
+              <div class="chart-header">
+                <h3>服务满意度分布</h3>
+              </div>
+              <div v-if="hasServiceSatisfactionData" ref="serviceSatisfactionChart" class="chart"></div>
+              <el-empty v-else description="暂无数据" />
+            </div>
+            
+            <div class="chart-container trend-chart">
+              <div class="chart-header">
+                <h3>护理计划满意度时间趋势</h3>
+                <div class="view-selector">
+                  <el-radio-group v-model="planTimeView" size="small" @change="updateNewCharts">
+                    <el-radio-button label="daily">日视图</el-radio-button>
+                    <el-radio-button label="monthly">月视图</el-radio-button>
+                    <el-radio-button label="yearly">年视图</el-radio-button>
+                  </el-radio-group>
+                </div>
+              </div>
+              <div v-if="hasPlanAggregationData" ref="planTimeChart" class="chart"></div>
+              <el-empty v-else description="暂无数据" />
+            </div>
+          </div>
+        </div>
+
         <!-- 客户列表区域 -->
         <div class="section-container">
           <div class="section-header">
@@ -225,6 +282,12 @@ const carePlans = ref([]);
 const clients = ref([]);
 const metrics = ref([]);
 const selectedClient = ref(null);
+const appointmentAggregation = ref(null);
+const planAggregation = ref(null);
+
+// 时间视图类型
+const appointmentTimeView = ref('daily');
+const planTimeView = ref('daily');
 
 // 图表实例存储
 const appointmentSatisfactionChart = ref(null);
@@ -234,6 +297,11 @@ const planSatisfactionChart = ref(null);
 const planStateChart = ref(null);
 const goalStateChart = ref(null);
 const metricsCharts = ref({});
+
+// 新增图表
+const appointmentTimeChart = ref(null);
+const serviceSatisfactionChart = ref(null);
+const planTimeChart = ref(null);
 
 // 客户筛选
 const clientFilter = ref('');
@@ -251,6 +319,16 @@ const filteredClients = computed(() => {
 const hasAppointmentData = computed(() => appointments.value.length > 0);
 const hasPlanData = computed(() => carePlans.value.length > 0);
 const hasMetricsData = computed(() => metrics.value.length > 0);
+const hasAppointmentAggregationData = computed(() => appointmentAggregation.value && 
+  (appointmentTimeView.value === 'daily' ? appointmentAggregation.value.daily_avg.length > 0 : 
+   appointmentTimeView.value === 'monthly' ? appointmentAggregation.value.monthly_avg.length > 0 : 
+   appointmentAggregation.value.yearly_avg.length > 0));
+const hasServiceSatisfactionData = computed(() => appointmentAggregation.value && 
+  appointmentAggregation.value.service_avg && appointmentAggregation.value.service_avg.length > 0);
+const hasPlanAggregationData = computed(() => planAggregation.value && 
+  (planTimeView.value === 'daily' ? planAggregation.value.daily_avg.length > 0 : 
+   planTimeView.value === 'monthly' ? planAggregation.value.monthly_avg.length > 0 : 
+   planAggregation.value.yearly_avg.length > 0));
 
 // 身体指标配置
 const metricsConfig = {
@@ -291,6 +369,12 @@ const refreshAppointmentData = () => {
 };
 
 const refreshPlanData = () => {
+  fetchCarePlans();
+};
+
+// 刷新所有数据
+const refreshAllData = () => {
+  fetchAppointments();
   fetchCarePlans();
 };
 
@@ -465,6 +549,92 @@ const initLineChart = (chartRef, title, data) => {
   return chart;
 };
 
+// 初始化柱状图
+const initBarChart = (chartRef, title, data, options = {}) => {
+  if (!chartRef) return;
+  
+  const chart = echarts.init(chartRef);
+  const option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      formatter: options.formatter || null,
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#333'
+      },
+      padding: [8, 12]
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      data: data.xAxis,
+      axisLabel: {
+        color: '#606266',
+        fontSize: options.xAxisFontSize || 10,
+        rotate: options.xAxisRotate || 0,
+        interval: options.xAxisInterval || 0,
+        formatter: options.xAxisFormatter || null
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: data.yAxisName || '',
+      min: options.yAxisMin,
+      max: options.yAxisMax,
+      nameTextStyle: {
+        color: '#606266',
+        padding: [0, 0, 0, 30]
+      },
+      axisLabel: {
+        color: '#606266',
+        formatter: options.yAxisFormatter || null
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed',
+          color: '#eee'
+        }
+      }
+    },
+    series: [{
+      name: title,
+      type: 'bar',
+      barWidth: options.barWidth || '60%',
+      data: data.series,
+      itemStyle: {
+        color: options.color || chartColors[0],
+        borderRadius: 4
+      },
+      label: options.showLabels ? {
+        show: true,
+        position: 'top',
+        formatter: options.labelFormatter || '{c}',
+        fontSize: 12,
+        color: '#606266'
+      } : null
+    }],
+    color: chartColors
+  };
+  
+  chart.setOption(option);
+  return chart;
+};
+
 // 处理客户点击事件
 const handleClientClick = (row) => {
   selectedClient.value = row;
@@ -492,10 +662,12 @@ const tableRowClassName = () => {
 // 数据获取函数
 const fetchAppointments = async () => {
   try {
-    const response = await http.get('/api/appointments/');
-    appointments.value = response.data;
+    const response = await http.get('/api/appointments/all/');
+    appointments.value = response.data.appointments;
+    appointmentAggregation.value = response.data.aggregations;
     nextTick(() => {
       updateAppointmentCharts();
+      updateNewCharts();
     });
   } catch (error) {
     console.error('获取预约数据失败:', error);
@@ -505,9 +677,11 @@ const fetchAppointments = async () => {
 const fetchCarePlans = async () => {
   try {
     const response = await http.get('/api/plans/all/');
-    carePlans.value = response.data;
+    carePlans.value = response.data.plans;
+    planAggregation.value = response.data.aggregations;
     nextTick(() => {
       updatePlanCharts();
+      updateNewCharts();
     });
   } catch (error) {
     console.error('获取护理计划数据失败:', error);
@@ -672,6 +846,257 @@ const updatePlanCharts = () => {
   });
 };
 
+// 更新新增的图表
+const updateNewCharts = () => {
+  // 更新预约满意度时间趋势图
+  if (hasAppointmentAggregationData.value && appointmentTimeChart.value) {
+    let data;
+    let options = {
+      yAxisMin: 0,
+      yAxisMax: 10,
+      yAxisFormatter: '{value} 分',
+      showLabels: true,
+      labelFormatter: '{c} 分',
+    };
+    
+    if (appointmentTimeView.value === 'daily') {
+      data = {
+        xAxis: appointmentAggregation.value.daily_avg.map(item => item.date),
+        series: appointmentAggregation.value.daily_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+      options.xAxisFormatter = value => value.slice(5); // 只显示月-日
+    } else if (appointmentTimeView.value === 'monthly') {
+      data = {
+        xAxis: appointmentAggregation.value.monthly_avg.map(item => item.month),
+        series: appointmentAggregation.value.monthly_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+    } else {
+      data = {
+        xAxis: appointmentAggregation.value.yearly_avg.map(item => item.year),
+        series: appointmentAggregation.value.yearly_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+    }
+    
+    initTrendChart(
+      appointmentTimeChart.value,
+      '预约满意度时间趋势',
+      data,
+      options
+    );
+  }
+
+  // 更新服务满意度分布图
+  if (hasServiceSatisfactionData.value && serviceSatisfactionChart.value) {
+    const serviceData = appointmentAggregation.value.service_avg;
+    
+    // 排序 - 按满意度从高到低
+    const sortedData = [...serviceData].sort((a, b) => b.avg_satisfaction - a.avg_satisfaction);
+    
+    const data = {
+      xAxis: sortedData.map(item => item.service_name),
+      series: sortedData.map(item => item.avg_satisfaction),
+      yAxisName: '平均满意度（分）'
+    };
+    
+    const options = {
+      yAxisMin: 0,
+      yAxisMax: 10,
+      yAxisFormatter: '{value} 分',
+      xAxisRotate: 30,
+      showLabels: true,
+      labelFormatter: '{c} 分',
+      barWidth: '50%',
+      color: chartColors[1]
+    };
+    
+    initBarChart(
+      serviceSatisfactionChart.value,
+      '服务满意度分布',
+      data,
+      options
+    );
+  }
+
+  // 更新护理计划满意度时间趋势图
+  if (hasPlanAggregationData.value && planTimeChart.value) {
+    let data;
+    let options = {
+      yAxisMin: 0,
+      yAxisMax: 10,
+      yAxisFormatter: '{value} 分',
+      showLabels: true,
+      labelFormatter: '{c} 分',
+      color: chartColors[2]
+    };
+    
+    if (planTimeView.value === 'daily') {
+      data = {
+        xAxis: planAggregation.value.daily_avg.map(item => item.date),
+        series: planAggregation.value.daily_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+      options.xAxisFormatter = value => value.slice(5); // 只显示月-日
+    } else if (planTimeView.value === 'monthly') {
+      data = {
+        xAxis: planAggregation.value.monthly_avg.map(item => item.month),
+        series: planAggregation.value.monthly_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+    } else {
+      data = {
+        xAxis: planAggregation.value.yearly_avg.map(item => item.year),
+        series: planAggregation.value.yearly_avg.map(item => item.avg_satisfaction),
+        yAxisName: '平均满意度（分）'
+      };
+    }
+    
+    initTrendChart(
+      planTimeChart.value,
+      '护理计划满意度时间趋势',
+      data,
+      options
+    );
+  }
+};
+
+// 初始化趋势图（柱状图+曲线图）
+const initTrendChart = (chartRef, title, data, options = {}) => {
+  if (!chartRef) return;
+  
+  // 确定柱状图颜色
+  const barColor = options.color || chartColors[0];
+  
+  // 根据柱状图颜色选择最佳趋势线颜色
+  let lineColor;
+  if (barColor === chartColors[0]) { // 绿色
+    lineColor = '#3366CC'; // 深蓝色
+  } else if (barColor === chartColors[2]) { // 红色
+    lineColor = '#5470C6'; // 蓝紫色
+  } else {
+    // 默认使用浅蓝色
+    lineColor = '#73C0DE';
+  }
+  
+  const chart = echarts.init(chartRef);
+  const option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      },
+      formatter: options.formatter || '{b}<br/>{a0}: {c0} 分<br/>{a1}: {c1} 分',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#333'
+      },
+      padding: [8, 12]
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '10%',  // 增加底部空间，为图例留出更多位置
+      containLabel: true
+    },
+    legend: {
+      data: ['满意度值', '趋势线'],
+      bottom: '0%',  // 将图例固定在底部
+      textStyle: {
+        color: '#606266',
+        fontSize: 12
+      },
+      itemWidth: 10,
+      itemHeight: 10,
+      itemGap: 15,
+      padding: [5, 5, 5, 5]  // 给图例增加内边距
+    },
+    xAxis: {
+      type: 'category',
+      data: data.xAxis,
+      axisLabel: {
+        color: '#606266',
+        fontSize: options.xAxisFontSize || 10,
+        rotate: options.xAxisRotate || 0,
+        interval: options.xAxisInterval || 0,
+        formatter: options.xAxisFormatter || null,
+        margin: 14  // 增加标签与轴的距离
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: data.yAxisName || '',
+      min: options.yAxisMin,
+      max: options.yAxisMax,
+      nameTextStyle: {
+        color: '#606266',
+        padding: [0, 0, 0, 30]
+      },
+      axisLabel: {
+        color: '#606266',
+        formatter: options.yAxisFormatter || null
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed',
+          color: '#eee'
+        }
+      }
+    },
+    series: [
+      {
+        name: '满意度值',
+        type: 'bar',
+        barWidth: options.barWidth || '50%',
+        data: data.series,
+        itemStyle: {
+          color: barColor,
+          borderRadius: [4, 4, 0, 0]
+        },
+        label: options.showLabels ? {
+          show: true,
+          position: 'top',
+          formatter: options.labelFormatter || '{c}',
+          fontSize: 12,
+          color: '#606266'
+        } : null
+      },
+      {
+        name: '趋势线',
+        type: 'line',
+        smooth: true,
+        data: data.series,
+        symbolSize: 6,
+        symbol: 'circle',
+        z: 10,
+        itemStyle: {
+          color: lineColor
+        },
+        lineStyle: {
+          width: 3,
+          color: lineColor,
+          shadowColor: 'rgba(0, 0, 0, 0.2)',
+          shadowBlur: 5,
+          shadowOffsetY: 5,
+          cap: 'round'
+        }
+      }
+    ],
+    color: chartColors
+  };
+  
+  chart.setOption(option);
+  return chart;
+};
+
 const updateMetricsCharts = () => {
   if (!hasMetricsData.value) return;
 
@@ -771,6 +1196,7 @@ window.addEventListener('resize', () => {
     nextTick(() => {
       updateAppointmentCharts();
       updatePlanCharts();
+      updateNewCharts();
     });
   }
 });
@@ -836,14 +1262,18 @@ onUnmounted(() => {
   gap: 12px;
 }
 
-.charts-row {
+.charts-row, .chart-row {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
 }
 
+.chart-row {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 1200px) {
-  .charts-row {
+  .charts-row, .chart-row {
     flex-direction: column;
   }
 }
@@ -858,6 +1288,10 @@ onUnmounted(() => {
   transition: all 0.3s;
 }
 
+.trend-chart {
+  min-width: 400px;
+}
+
 .chart-container:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -868,6 +1302,22 @@ onUnmounted(() => {
   font-size: 16px;
   font-weight: 500;
   text-align: center;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.chart-header h3 {
+  margin: 0;
+}
+
+.view-selector {
+  display: flex;
+  align-items: center;
 }
 
 .chart {

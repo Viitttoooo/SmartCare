@@ -177,6 +177,11 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class AvgSatisfactionSerializer(serializers.Serializer):
+    period = serializers.DateField()
+    avg_satisfaction = serializers.FloatField()
+
+
 # 序列化 预约
 class AppointmentSerializer(serializers.ModelSerializer):
     client_first_name = serializers.SerializerMethodField()

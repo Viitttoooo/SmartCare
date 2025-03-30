@@ -172,7 +172,7 @@
           </div>
           <el-dropdown @command="handleCommand">
             <el-button type="primary">
-              信息管理
+              个人资料
               <el-icon><ArrowDown /></el-icon>
             </el-button>
             <template #dropdown>

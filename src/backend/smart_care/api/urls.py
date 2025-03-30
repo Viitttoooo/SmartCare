@@ -38,6 +38,7 @@ urlpatterns = [
     path('appointments/delete/<int:pk>/', views.delete_appointments, name='delete_appointments'),
     path('appointments/create/<int:client_id>/', views.create_appointment, name='create_appointment'),
     path('appointments/update/<int:client_id>/', views.update_appointment, name='update_client_appointment'),
+    path('appointments/all/', views.get_all_appointments, name='get_all_appointments'),
     path('goals/create/', views.create_goal, name='create_goal'),
     path('goals/update/', views.update_goal, name="update_goal"),
     path('goals/delete/<int:pk>/', views.delete_goal, name='delete_goal'),

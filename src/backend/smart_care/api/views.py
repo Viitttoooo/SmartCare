@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import check_password, make_password
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Avg
+from django.db.models.functions import TruncDay, TruncMonth, TruncYear
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
@@ -8,7 +9,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .cache_keys import CLIENTS_DATA, INGREDIENTS_DATA, PER_CLIENT, STAFF_DATA, PER_METRICS, PER_PLANS, PER_REPORT, \
     PLAN_APPOINTMENTS, PLAN_GOALS, SERVICES_DATA, APPOINTMENTS_DATA, PER_APPOINTMENTS, TEMPLATES_DATA, SCHEDULES_DATA, \
-    PER_SCHEDULES, RECIPES_DATA, DIET_PLANS, PER_DIET_PLAN, USERS_DATA, PLANS, ROLES
+    PER_SCHEDULES, RECIPES_DATA, DIET_PLANS, PER_DIET_PLAN, USERS_DATA, PLANS, ROLES, APPOINTMENTS
 from .models import Users, Roles, Clients, GENDER, Staff, HealthMetrics, CarePlans, Services, Appointments, \
     PlanGoals, ShiftTemplates, StaffSchedules, Ingredients, FoodRecipes, RecipeIngredient, DietPlans, PlanRecipe, \
     Notification, MaritalStatus, IncomeRange
@@ -20,7 +21,7 @@ from .serializers import UserSerializer, LoginSerializer, SMSSerializer, \
     DietPlanSerializer, CertainDayDietPlanSerializer, CreateDietPlanSerializer, UpdateDietPlanSerializer, \
     DeleteDietPlanSerializer, UpdateDietPlanFieldsSerializer, CreateDietPlanRecordSerializer, UpdateUserSerializer, \
     RegisterSerializer, PasswordSerializer, UserShowSerializer, AvailableStaffSerializer, AdminRegisterSerializer, \
-    NotificationSerializer, CarePlanWithGoalsSerializer
+    NotificationSerializer, CarePlanWithGoalsSerializer, AvgSatisfactionSerializer
 from django.utils import timezone
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout
@@ -287,6 +288,7 @@ def register(request):
         )
         cache_key = CLIENTS_DATA
         cache.delete(cache_key)
+        cache.delete(USERS_DATA)
         # 返回成功响应
         return Response({"message": "registered successfully!"}, status=status.HTTP_200_OK)
 
@@ -346,6 +348,7 @@ def register_admin(request):
     serializer = AdminRegisterSerializer(data=user_data)
     if serializer.is_valid():
         user = serializer.save()  # 保存到数据库
+        cache.delete(USERS_DATA)
         user_id = user.id
         if is_staff:
             Staff.objects.create(user_id=user_id)
@@ -796,11 +799,139 @@ def get_client_plans(request, client_id):
     return Response(plans_data, status=status.HTTP_200_OK)
 
 
+@swagger_auto_schema(
+    method="GET",
+    responses={
+        200: "成功",
+        400: "失败",
+    }
+)
+@api_view(["GET"])
+@permission_classes([IsStaff | IsAdmin])
+def get_all_appointments(request):
+    # 从缓存中获取数据
+    data = cache.get(APPOINTMENTS)
+    if not data:
+        # 查询所有预约数据
+        appointments = Appointments.objects.all()
+        appointments_serializer = AppointmentSerializer(appointments, many=True)
+
+        # 计算每日满意度均值
+        daily_avg = Appointments.objects.filter(satisfaction__isnull=False).annotate(
+            date=TruncDay('schedule_date')
+        ).values('date').annotate(
+            avg_satisfaction=Avg('satisfaction')
+        ).order_by('date')
+
+        # 计算月度满意度均值
+        monthly_avg = Appointments.objects.filter(satisfaction__isnull=False).annotate(
+            month=TruncMonth('schedule_date')
+        ).values('month').annotate(
+            avg_satisfaction=Avg('satisfaction')
+        ).order_by('month')
+
+        # 计算年度满意度均值
+        yearly_avg = Appointments.objects.filter(satisfaction__isnull=False).annotate(
+            year=TruncYear('schedule_date')
+        ).values('year').annotate(
+            avg_satisfaction=Avg('satisfaction')
+        ).order_by('year')
+
+        # 计算每个服务的满意度均值
+        service_avg = Appointments.objects.filter(satisfaction__isnull=False).values('service__service_name').annotate(
+            avg_satisfaction=Avg('satisfaction'),
+            count=Count('satisfaction')
+        ).order_by('service__service_name')
+
+        # 格式化聚合数据
+        daily_avg_list = [
+            {'date': item['date'].strftime('%Y-%m-%d'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in daily_avg
+        ]
+        monthly_avg_list = [
+            {'month': item['month'].strftime('%Y-%m'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in monthly_avg
+        ]
+        yearly_avg_list = [
+            {'year': item['year'].strftime('%Y'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in yearly_avg
+        ]
+        service_avg_list = [
+            {
+                'service_name': item['service__service_name'],
+                'avg_satisfaction': round(item['avg_satisfaction'], 2),
+                'count': item['count']
+            }
+            for item in service_avg
+        ]
+
+        # 构造返回数据
+        data = {
+            'appointments': appointments_serializer.data,
+            'aggregations': {
+                'daily_avg': daily_avg_list,
+                'monthly_avg': monthly_avg_list,
+                'yearly_avg': yearly_avg_list,
+                'service_avg': service_avg_list
+            }
+        }
+        # 将数据存入缓存
+        cache.set(APPOINTMENTS, data)
+
+    return Response(data, status=status.HTTP_200_OK)
+
+
 # 查询所有康复计划及计划包含的目标 用于报表数据展示
 @swagger_auto_schema(
     method='GET',
     responses={
-        200: CarePlanWithGoalsSerializer(many=True),
+        200: openapi.Response(
+            description="成功",
+            schema=openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'plans': openapi.Schema(
+                        type=openapi.TYPE_ARRAY,
+                        items=openapi.Schema(type=openapi.TYPE_OBJECT)
+                    ),
+                    'aggregations': openapi.Schema(
+                        type=openapi.TYPE_OBJECT,
+                        properties={
+                            'daily_avg': openapi.Schema(
+                                type=openapi.TYPE_ARRAY,
+                                items=openapi.Schema(
+                                    type=openapi.TYPE_OBJECT,
+                                    properties={
+                                        'date': openapi.Schema(type=openapi.TYPE_STRING, format='date'),
+                                        'avg_satisfaction': openapi.Schema(type=openapi.TYPE_NUMBER)
+                                    }
+                                )
+                            ),
+                            'monthly_avg': openapi.Schema(
+                                type=openapi.TYPE_ARRAY,
+                                items=openapi.Schema(
+                                    type=openapi.TYPE_OBJECT,
+                                    properties={
+                                        'month': openapi.Schema(type=openapi.TYPE_STRING, format='date'),
+                                        'avg_satisfaction': openapi.Schema(type=openapi.TYPE_NUMBER)
+                                    }
+                                )
+                            ),
+                            'yearly_avg': openapi.Schema(
+                                type=openapi.TYPE_ARRAY,
+                                items=openapi.Schema(
+                                    type=openapi.TYPE_OBJECT,
+                                    properties={
+                                        'year': openapi.Schema(type=openapi.TYPE_STRING),
+                                        'avg_satisfaction': openapi.Schema(type=openapi.TYPE_NUMBER)
+                                    }
+                                )
+                            )
+                        }
+                    )
+                }
+            )
+        ),
         403: "Permission denied"
     }
 )
@@ -810,19 +941,60 @@ def get_all_plans(request):
     """
     查询所有康复计划及其包含的目标，用于报表数据展示。
     仅限员工 (IsStaff) 或管理员 (IsAdmin) 访问。
+    返回数据包含计划列表和按日、月、年聚合的满意度均值。
     """
-    plans_data = cache.get(PLANS)
-    if not plans_data:
-        # 获取所有康复计划
+    # 获取计划数据（保持原有逻辑）
+    data = cache.get(PLANS)
+    if not data:
         plans = CarePlans.objects.all().prefetch_related('plangoals_set')
-
-        # 使用序列化器转换数据
         serializer = CarePlanWithGoalsSerializer(plans, many=True)
         plans_data = serializer.data
-        cache.set(PLANS, plans_data)
 
-    # 返回 JSON 响应
-    return Response(plans_data, status=status.HTTP_200_OK)
+        # 计算日、月、年满意度均值
+        daily_avg = CarePlans.objects.filter(plan_satisfaction__isnull=False).annotate(
+            date=TruncDay('start_date')
+        ).values('date').annotate(
+            avg_satisfaction=Avg('plan_satisfaction')
+        ).order_by('date')
+
+        monthly_avg = CarePlans.objects.filter(plan_satisfaction__isnull=False).annotate(
+            month=TruncMonth('start_date')
+        ).values('month').annotate(
+            avg_satisfaction=Avg('plan_satisfaction')
+        ).order_by('month')
+
+        yearly_avg = CarePlans.objects.filter(plan_satisfaction__isnull=False).annotate(
+            year=TruncYear('start_date')
+        ).values('year').annotate(
+            avg_satisfaction=Avg('plan_satisfaction')
+        ).order_by('year')
+
+        # 格式化聚合数据
+        daily_avg_list = [
+            {'date': item['date'].strftime('%Y-%m-%d'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in daily_avg
+        ]
+        monthly_avg_list = [
+            {'month': item['month'].strftime('%Y-%m'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in monthly_avg
+        ]
+        yearly_avg_list = [
+            {'year': item['year'].strftime('%Y'), 'avg_satisfaction': round(item['avg_satisfaction'], 2)}
+            for item in yearly_avg
+        ]
+
+        # 构建响应数据
+        data = {
+            'plans': plans_data,
+            'aggregations': {
+                'daily_avg': daily_avg_list,
+                'monthly_avg': monthly_avg_list,
+                'yearly_avg': yearly_avg_list
+            }
+        }
+        cache.set(PLANS, data)
+
+    return Response(data, status=status.HTTP_200_OK)
 
 
 # 创建康复计划
@@ -1052,6 +1224,7 @@ def delete_appointments(request, pk):
         cache.delete(PER_REPORT.format(plan_id))
         cache.delete(PLAN_APPOINTMENTS.format(plan_id))
         cache.delete(APPOINTMENTS_DATA)
+        cache.delete(APPOINTMENTS)
         cache.delete(PER_APPOINTMENTS.format(client_id))
         return Response(status=status.HTTP_200_OK)
     except Appointments.DoesNotExist:
@@ -1173,6 +1346,7 @@ def create_appointment(request, client_id):
             cache.delete(PLAN_APPOINTMENTS.format(request.data['plan']))
             cache.delete(PER_REPORT.format(request.data['plan']))
         cache.delete(APPOINTMENTS_DATA)
+        cache.delete(APPOINTMENTS)
         cache.delete(PER_APPOINTMENTS.format(client_id))
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
@@ -1293,6 +1467,7 @@ def update_appointment(request, client_id):
         cache.delete(PLAN_APPOINTMENTS.format(plan_id))
         cache.delete(PER_REPORT.format(plan_id))
         cache.delete(APPOINTMENTS_DATA)
+        cache.delete(APPOINTMENTS)
         cache.delete(PER_APPOINTMENTS.format(client_id))
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -1668,6 +1843,7 @@ def update_staff_schedule(request):
 
         if count:
             cache.delete(APPOINTMENTS_DATA)
+            cache.delete(APPOINTMENTS)
             for client_id in client_ids:
                 cache.delete(PER_APPOINTMENTS.format(client_id))
     # 返回成功响应

@@ -31,6 +31,37 @@
           <el-button type="primary" @click="showAddUserDialog">
             <el-icon><Plus /></el-icon>新增用户
           </el-button>
+          <el-button @click="fetchUsers">
+            <el-icon><Refresh /></el-icon>刷新数据
+          </el-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 角色统计展示栏 -->
+    <div class="role-statistics">
+      <div class="stats-section">
+        <div class="section-title">角色统计</div>
+        <div class="stats-content">
+          <div class="stats-cards">
+            <el-card 
+              v-for="stat in roleStatistics" 
+              :key="stat.role" 
+              class="role-stat-card"
+              shadow="hover"
+            >
+              <div class="stat-content">
+                <div class="stat-value">{{ stat.count }}</div>
+                <div class="stat-label">{{ stat.role }}</div>
+              </div>
+            </el-card>
+            <el-card class="role-stat-card" shadow="hover">
+              <div class="stat-content">
+                <div class="stat-value">{{ users.length }}</div>
+                <div class="stat-label">用户总数</div>
+              </div>
+            </el-card>
+          </div>
         </div>
       </div>
     </div>
@@ -51,6 +82,12 @@
             <el-tag :type="scope.row.is_active ? 'success' : 'danger'" effect="light">
               {{ scope.row.is_active ? '已激活' : '已禁用' }}
             </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="重置密码申请" width="120">
+          <template #default="scope">
+            <el-tag v-if="scope.row.is_reset" type="warning" effect="light">有</el-tag>
+            <el-tag v-else type="info" effect="light">无</el-tag>
           </template>
         </el-table-column>
       </el-table>
@@ -145,7 +182,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { Search, Plus } from '@element-plus/icons-vue';
+import { Search, Plus, Refresh } from '@element-plus/icons-vue';
 import http from '../utils/axios';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -176,6 +213,7 @@ const fetchUsers = async () => {
   try {
     const response = await http.get('/api/users/');
     users.value = response.data;
+    ElMessage.success('数据刷新成功');
   } catch (error) {
     console.error('获取用户列表失败:', error);
     ElMessage.error('获取用户列表失败');
@@ -204,6 +242,27 @@ const filteredUsers = computed(() => {
     
     return (idMatch || usernameMatch || nameMatch) && roleMatch;
   });
+});
+
+// 角色统计 可改进：数量过大时可以在后端进行统计
+const roleStatistics = computed(() => {
+  const stats = {};
+  
+  // 统计每个角色的用户数量
+  users.value.forEach(user => {
+    if (user.role_name) {
+      if (!stats[user.role_name]) {
+        stats[user.role_name] = 0;
+      }
+      stats[user.role_name]++;
+    }
+  });
+  
+  // 转换为数组格式
+  return Object.entries(stats).map(([role, count]) => ({
+    role,
+    count
+  }));
 });
 
 // 格式化时间
@@ -246,7 +305,15 @@ const handleResetPassword = async () => {
     
     await http.patch(`/api/users/password_reset/${selectedUser.value.id}/`);
     ElMessage.success('密码重置成功');
+    
+    // 更新当前选中的用户
     selectedUser.value.is_reset = false;
+    
+    // 更新列表中的用户状态
+    const index = users.value.findIndex(u => u.id === selectedUser.value.id);
+    if (index !== -1) {
+      users.value[index].is_reset = false;
+    }
   } catch (error) {
     if (error !== 'cancel') {
       console.error('密码重置失败:', error);
@@ -315,11 +382,13 @@ onMounted(() => {
   padding: 20px;
 }
 
-.filter-container {
+.filter-container,
+.role-statistics {
   margin-bottom: 20px;
 }
 
-.filter-section {
+.filter-section,
+.stats-section {
   background: white;
   border: 1px solid #ebeef5;
   border-radius: 8px;
@@ -352,6 +421,45 @@ onMounted(() => {
   display: flex;
   gap: 16px;
   align-items: center;
+}
+
+.stats-content {
+  padding: 8px 0;
+}
+
+.stats-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.role-stat-card {
+  width: 160px;
+  transition: all 0.3s;
+}
+
+.role-stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #409EFF;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #606266;
 }
 
 .search-input {
