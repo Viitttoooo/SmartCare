@@ -14,14 +14,14 @@ from .models import Users, Roles, Clients, GENDER, Staff, HealthMetrics, CarePla
     PlanGoals, ShiftTemplates, StaffSchedules, Ingredients, FoodRecipes, RecipeIngredient, DietPlans, PlanRecipe, \
     Notification, MaritalStatus, IncomeRange
 from .permissions import IsAdmin, IsStaff, IsClient
-from .serializers import UserSerializer, LoginSerializer, SMSSerializer, \
-    RegisterUserSerializer, ClientSerializer, IdSerializer, HealthMetricSerializer, CarePlanSerializer, \
+from .serializers import UserSerializer, LoginSerializer, \
+    ClientSerializer, HealthMetricSerializer, CarePlanSerializer, \
     ServiceSerializer, AppointmentSerializer, PlanGoalSerializer, ShiftTemplateSerializer, RoleSerializer, \
     StaffScheduleSerializer, IngredientSerializer, FoodRecipeSerializer, CreateRecipeSerializer, UpdateRecipeSerializer, \
-    DietPlanSerializer, CertainDayDietPlanSerializer, CreateDietPlanSerializer, UpdateDietPlanSerializer, \
+    DietPlanSerializer, CertainDayDietPlanSerializer, UpdateDietPlanSerializer, \
     DeleteDietPlanSerializer, UpdateDietPlanFieldsSerializer, CreateDietPlanRecordSerializer, UpdateUserSerializer, \
     RegisterSerializer, PasswordSerializer, UserShowSerializer, AvailableStaffSerializer, AdminRegisterSerializer, \
-    NotificationSerializer, CarePlanWithGoalsSerializer, AvgSatisfactionSerializer
+    NotificationSerializer, CarePlanWithGoalsSerializer
 from django.utils import timezone
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout

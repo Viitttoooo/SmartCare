@@ -75,17 +75,6 @@ class AdminRegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-# 序列化 手机号
-class SMSSerializer(serializers.Serializer):
-    phone = serializers.CharField(max_length=255)
-
-
-# 序列化 手机号和验证码
-class RegisterUserSerializer(serializers.Serializer):
-    phone = serializers.CharField(max_length=255)
-    sms = serializers.CharField(max_length=255)
-
-
 # 序列化 客户信息
 class ClientSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source="user.first_name", required=False)
@@ -115,11 +104,6 @@ class ClientSerializer(serializers.ModelSerializer):
                 user.last_name = last_name
             user.save()
         return instance
-
-
-# 序列化 id
-class IdSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
 
 
 # 序列化 健康档案
@@ -175,11 +159,6 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Services
         fields = "__all__"
-
-
-class AvgSatisfactionSerializer(serializers.Serializer):
-    period = serializers.DateField()
-    avg_satisfaction = serializers.FloatField()
 
 
 # 序列化 预约
@@ -413,48 +392,6 @@ class CertainDayDietPlanSerializer(serializers.ModelSerializer):
     def get_dinner(self, obj):
         recipes = PlanRecipe.objects.filter(diet_plan=obj, type=Type.DINNER.value)
         return [recipe.recipe.recipe_name for recipe in recipes]
-
-
-class CreateDietPlanSerializer(serializers.Serializer):
-    client_id = serializers.IntegerField()
-    diet_date = serializers.DateField()
-    type = serializers.ChoiceField(choices=[(tag.value, tag.name) for tag in Type])
-    recipe_ids = serializers.ListField(child=serializers.IntegerField())
-
-    def create(self, validated_data):
-        client_id = validated_data['client_id']
-        diet_date = validated_data['diet_date']
-        meal_type = validated_data['type']
-        recipe_ids = validated_data['recipe_ids']
-
-        # 获取或创建当日的膳食计划
-        diet_plan, _ = DietPlans.objects.get_or_create(client_id=client_id, diet_date=diet_date)
-
-        # 添加 PlanRecipe 记录
-        for recipe_id in recipe_ids:
-            recipe = FoodRecipes.objects.get(recipe_id=recipe_id)
-            PlanRecipe.objects.create(diet_plan=diet_plan, recipe=recipe, type=meal_type)
-
-        # 计算总营养摄入
-        total_nutrition = self.calculate_nutrition(diet_plan)
-        diet_plan.nutrition_taken = total_nutrition
-        diet_plan.save()
-        return diet_plan
-
-    def calculate_nutrition(self, diet_plan):
-        all_recipes = PlanRecipe.objects.filter(diet_plan=diet_plan).select_related('recipe')
-        total = {
-            '热量': {'单位': 'kcal', '数量': 0},
-            '脂肪': {'单位': 'g', '数量': 0},
-            '蛋白质': {'单位': 'g', '数量': 0},
-            '碳水化合物': {'单位': 'g', '数量': 0}
-        }
-        for plan_recipe in all_recipes:
-            nutrition = plan_recipe.recipe.nutrition_info or {}
-            for key in total:
-                if key in nutrition:
-                    total[key]['数量'] += nutrition[key].get('数量', 0)
-        return total
 
 
 class UpdateDietPlanSerializer(serializers.Serializer):
