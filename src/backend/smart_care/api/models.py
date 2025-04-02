@@ -147,7 +147,7 @@ class HealthMetrics(models.Model):
     vital_signs = models.JSONField(blank=True, null=True)
     record_date = models.DateTimeField(blank=True, null=True)
     assessment = models.CharField(max_length=1024, blank=True, null=True)
-    staff = models.ForeignKey('Staff', models.CASCADE)
+    staff = models.ForeignKey('Staff', models.CASCADE, blank=True, null=True)
     mets_probability = models.FloatField(blank=True, null=True)
     smart_assessment = models.CharField(max_length=1024, blank=True, null=True)
 
