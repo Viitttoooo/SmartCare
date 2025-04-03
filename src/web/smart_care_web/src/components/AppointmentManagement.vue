@@ -86,7 +86,7 @@
       </el-table-column>
       <el-table-column label="满意度" min-width="100">
         <template #default="{ row }">
-          <span v-if="row.satisfaction !== null">{{ row.satisfaction }}/10</span>
+          <span v-if="row.satisfaction !== null">{{ row.satisfaction }} 分</span>
           <span v-else>未评分</span>
         </template>
       </el-table-column>

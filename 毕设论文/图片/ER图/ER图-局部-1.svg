@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="306mm" xmlns="http://www.w3.org/2000/svg" height="209mm" version="1.1" viewBox="0 0 1158 793" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <polyline fill="none" points="1014,170 1014,242" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="1021,184 1014,197 1007,184" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <ellipse cx="1013" cy="200" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="1019,229 1009,229" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1014" y="213" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">是否为客户</text>
+   <polyline fill="none" points="1022,434 1022,536" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="1016,448 1027,448" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="1015,522 1022,509 1028,522" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <ellipse cx="1021" cy="505" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1021" y="492" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">是否为员工</text>
+   <polyline fill="none" points="745,719 912,719" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="758,724 758,713" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="899,726 886,719 899,712" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="912,722 899,722" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="912,716 899,716" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="882" cy="718" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <text x="828" y="718" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">关联</text>
+   <polyline fill="none" points="1005,596 1005,677" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="1000,609 1011,609" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="998,664 1005,650 1012,664" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="1002,677 1002,664" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="1008,677 1008,664" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="1005" cy="646" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1005" y="643" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">拥有</text>
+   <polyline fill="none" points="174,517 174,468 174,468 174,419" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="167,503 174,490 181,503" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="171,517 171,503" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="177,517 177,503" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="173" cy="486" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="168,433 179,432" stroke="#00aaaa" stroke-width="1"/>
+   <text x="173" y="475" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">关联</text>
+   <polyline fill="none" points="175,683 175,601" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="180,670 169,670" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="181,614 175,627 168,614" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="178,601 178,614" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="172,601 172,614" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="174" cy="630" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <text x="174" y="649" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">关联</text>
+   <polyline fill="none" points="293,91 336,91 336,193 361,193" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="307,84 320,91 307,98" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="293,88 307,88" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="293,94 307,94" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="323" cy="90" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="348,187 348,198" stroke="#00aaaa" stroke-width="1"/>
+   <text x="329" y="139" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">关联</text>
+   <polyline fill="none" points="174,164 174,347" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="180,177 174,190 167,177" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="177,164 177,177" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="171,164 171,177" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="173" cy="193" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="179,334 168,334" stroke="#00aaaa" stroke-width="1"/>
+   <text x="173" y="262" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">关联</text>
+   <polyline fill="none" points="709,143 822,143" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="722,136 735,143 722,150" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="709,140 722,140" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="709,146 722,146" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="738" cy="143" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="808,138 808,149" stroke="#00aaaa" stroke-width="1"/>
+   <text x="765" y="143" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">拥有</text>
+   <polyline fill="none" points="929,564 426,564 426,203" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="918" cy="563" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="436,190 426,216 417,190 436,190" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="426" cy="219" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <text x="426" y="578" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">制定膳食计划</text>
+   <polyline fill="none" points="713,338 872,338" stroke="#00aaaa" stroke-width="1"/>
+   <polygon fill="#ffffff" points="726,332 739,338 726,345" stroke="#00aaaa" stroke-width="1" stroke-linejoin="miter"/>
+   <polyline fill="none" points="713,335 726,335" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="713,342 726,342" stroke="#00aaaa" stroke-width="1"/>
+   <ellipse cx="742" cy="338" rx="3" ry="3" fill="#ffffff" stroke="#00aaaa" stroke-width="1"/>
+   <polyline fill="none" points="859,333 859,344" stroke="#00aaaa" stroke-width="1"/>
+   <text x="815" y="340" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">拥有</text>
+   <defs>
+      <linearGradient id="Gradient1" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="872" y="242" fill="url(#Gradient1)" width="284" height="192" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1014" y="252" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">用户</text>
+   <line x1="872" x2="1156" y1="257" y2="257" stroke="#00aaaa" stroke-width="1"/>
+   <text x="877" y="266" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">role_id</text>
+   <text x="877" y="277" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">username</text>
+   <text x="877" y="288" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">email</text>
+   <text x="877" y="299" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">user_id</text>
+   <text x="877" y="310" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">password</text>
+   <text x="877" y="321" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">is_reset</text>
+   <text x="877" y="332" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">first_name</text>
+   <text x="877" y="343" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">last_name</text>
+   <text x="877" y="354" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">is_active</text>
+   <text x="877" y="365" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">last_login</text>
+   <text x="877" y="376" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">date_joined</text>
+   <text x="877" y="387" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">is_staff</text>
+   <text x="877" y="398" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">is_superuser</text>
+   <text x="945" y="299" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="973" y="266" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="973" y="277" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (150)</text>
+   <text x="973" y="288" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (254)</text>
+   <text x="973" y="299" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="973" y="310" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (128)</text>
+   <text x="973" y="321" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Boolean</text>
+   <text x="973" y="332" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (150)</text>
+   <text x="973" y="343" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (150)</text>
+   <text x="973" y="354" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Boolean</text>
+   <text x="973" y="365" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date &amp; Time</text>
+   <text x="973" y="376" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date &amp; Time</text>
+   <text x="973" y="387" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Boolean</text>
+   <text x="973" y="398" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Boolean</text>
+   <text x="1106" y="266" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="277" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="288" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="299" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="1106" y="310" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="321" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="332" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="343" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="354" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="376" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="387" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1106" y="398" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="872" x2="1156" y1="404" y2="404" stroke="#00aaaa" stroke-width="1"/>
+   <text x="877" y="413" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">user_id</text>
+   <text x="920" y="413" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient2" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="822" y="2" fill="url(#Gradient2)" width="318" height="168" stroke="#00aaaa" stroke-width="1"/>
+   <text x="981" y="12" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">客户</text>
+   <line x1="822" x2="1140" y1="17" y2="17" stroke="#00aaaa" stroke-width="1"/>
+   <text x="826" y="26" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">user_id</text>
+   <text x="826" y="37" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">client_id</text>
+   <text x="826" y="48" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">care_level</text>
+   <text x="826" y="59" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">care_demand</text>
+   <text x="826" y="70" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">medical_history</text>
+   <text x="826" y="81" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">dietary_preference</text>
+   <text x="826" y="92" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">gender</text>
+   <text x="826" y="103" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">birth_date</text>
+   <text x="826" y="114" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">emergency_contact</text>
+   <text x="826" y="125" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">income_range</text>
+   <text x="826" y="136" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">marrital</text>
+   <text x="924" y="37" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="952" y="26" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="952" y="37" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="952" y="48" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="952" y="59" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="952" y="70" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="952" y="81" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="952" y="92" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="952" y="103" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date</text>
+   <text x="952" y="114" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="952" y="125" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (20)</text>
+   <text x="952" y="136" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="1085" y="26" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1085" y="37" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="1085" y="48" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="822" x2="1140" y1="142" y2="142" stroke="#00aaaa" stroke-width="1"/>
+   <text x="826" y="151" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">client_id</text>
+   <text x="879" y="151" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient3" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="929" y="536" fill="url(#Gradient3)" width="157" height="60" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1007" y="546" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">员工</text>
+   <line x1="929" x2="1086" y1="551" y2="551" stroke="#00aaaa" stroke-width="1"/>
+   <text x="934" y="560" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">staff_id</text>
+   <text x="934" y="571" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">user_id</text>
+   <text x="982" y="560" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="1010" y="560" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="1010" y="571" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="1053" y="560" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="1053" y="571" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="929" x2="1086" y1="577" y2="577" stroke="#00aaaa" stroke-width="1"/>
+   <text x="934" y="586" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">staff_id</text>
+   <text x="982" y="586" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient4" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="467" y="665" fill="url(#Gradient4)" width="278" height="96" stroke="#00aaaa" stroke-width="1"/>
+   <text x="606" y="675" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">轮班模板表</text>
+   <line x1="467" x2="745" y1="680" y2="680" stroke="#00aaaa" stroke-width="1"/>
+   <text x="471" y="689" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">template_id</text>
+   <text x="471" y="700" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">shift_name</text>
+   <text x="471" y="711" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">start_time</text>
+   <text x="471" y="722" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">end_time</text>
+   <text x="471" y="733" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">color_code</text>
+   <text x="534" y="689" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="562" y="689" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="562" y="700" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="562" y="711" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Time</text>
+   <text x="562" y="722" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Time</text>
+   <text x="562" y="733" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="695" y="689" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="695" y="700" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="695" y="711" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="695" y="722" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="467" x2="745" y1="739" y2="739" stroke="#00aaaa" stroke-width="1"/>
+   <text x="471" y="748" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">template_id</text>
+   <text x="534" y="748" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient5" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="912" y="677" fill="url(#Gradient5)" width="186" height="84" stroke="#00aaaa" stroke-width="1"/>
+   <text x="1005" y="687" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">员工轮班计划表</text>
+   <line x1="912" x2="1098" y1="692" y2="692" stroke="#00aaaa" stroke-width="1"/>
+   <text x="917" y="701" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">shift_id</text>
+   <text x="917" y="712" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">staff_id</text>
+   <text x="917" y="723" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">template_id</text>
+   <text x="917" y="734" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">assigned_date</text>
+   <text x="990" y="701" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="1018" y="701" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="1018" y="712" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="1018" y="723" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="1018" y="734" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date</text>
+   <text x="1061" y="701" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="1061" y="712" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1061" y="723" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="1061" y="734" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="912" x2="1098" y1="740" y2="740" stroke="#00aaaa" stroke-width="1"/>
+   <text x="917" y="749" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">shift_id</text>
+   <text x="965" y="749" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient6" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="361" y="83" fill="url(#Gradient6)" width="348" height="120" stroke="#00aaaa" stroke-width="1"/>
+   <text x="535" y="93" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">膳食计划</text>
+   <line x1="361" x2="709" y1="98" y2="98" stroke="#00aaaa" stroke-width="1"/>
+   <text x="366" y="107" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">diet_plan_id</text>
+   <text x="366" y="118" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">diet_date</text>
+   <text x="366" y="129" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">client_id</text>
+   <text x="366" y="140" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">staff_id</text>
+   <text x="366" y="151" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">nutrition_requirements</text>
+   <text x="366" y="162" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">nutrition_taken</text>
+   <text x="366" y="173" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">smart_recommendation</text>
+   <text x="484" y="107" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="512" y="107" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="512" y="118" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date</text>
+   <text x="512" y="129" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="512" y="140" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="512" y="151" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="512" y="162" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="512" y="173" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (1024)</text>
+   <text x="650" y="107" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="650" y="118" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="650" y="129" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="361" x2="709" y1="179" y2="179" stroke="#00aaaa" stroke-width="1"/>
+   <text x="366" y="188" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">diet_plan_id</text>
+   <text x="434" y="188" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient7" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="26" y="347" fill="url(#Gradient7)" width="296" height="72" stroke="#00aaaa" stroke-width="1"/>
+   <text x="174" y="357" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">食谱</text>
+   <line x1="26" x2="322" y1="362" y2="362" stroke="#00aaaa" stroke-width="1"/>
+   <text x="31" y="371" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">recipe_id</text>
+   <text x="31" y="382" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">nutrition_info</text>
+   <text x="31" y="393" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">recipe_name</text>
+   <text x="109" y="371" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="137" y="371" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="137" y="382" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="137" y="393" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="270" y="371" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="270" y="393" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="26" x2="322" y1="399" y2="399" stroke="#00aaaa" stroke-width="1"/>
+   <text x="31" y="408" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">reciept_id</text>
+   <text x="89" y="408" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient8" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="2" y="683" fill="url(#Gradient8)" width="342" height="108" stroke="#00aaaa" stroke-width="1"/>
+   <text x="173" y="693" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">食材</text>
+   <line x1="2" x2="344" y1="698" y2="698" stroke="#00aaaa" stroke-width="1"/>
+   <text x="7" y="707" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">ingredient_id</text>
+   <text x="7" y="718" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">ingredient_name</text>
+   <text x="7" y="729" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">ingredient_description</text>
+   <text x="7" y="740" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">nutrition</text>
+   <text x="7" y="751" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">unit</text>
+   <text x="7" y="762" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">ingredient_amount</text>
+   <text x="125" y="707" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="153" y="707" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="153" y="718" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="153" y="729" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="153" y="740" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Json</text>
+   <text x="153" y="751" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="153" y="762" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="286" y="707" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="286" y="718" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="286" y="729" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="286" y="740" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="286" y="751" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="286" y="762" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="2" x2="344" y1="768" y2="768" stroke="#00aaaa" stroke-width="1"/>
+   <text x="7" y="777" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">ingredient_id</text>
+   <text x="80" y="777" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient9" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="82" y="517" fill="url(#Gradient9)" width="186" height="84" stroke="#00aaaa" stroke-width="1"/>
+   <text x="175" y="527" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">菜单食材关系表</text>
+   <line x1="82" x2="268" y1="532" y2="532" stroke="#00aaaa" stroke-width="1"/>
+   <text x="86" y="541" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">id</text>
+   <text x="86" y="552" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">recipe_id</text>
+   <text x="86" y="563" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">ingredient_id</text>
+   <text x="86" y="574" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">quantity</text>
+   <text x="159" y="541" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="187" y="541" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="187" y="552" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="187" y="563" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="187" y="574" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="230" y="541" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="230" y="552" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="230" y="563" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="230" y="574" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="82" x2="268" y1="580" y2="580" stroke="#00aaaa" stroke-width="1"/>
+   <text x="86" y="589" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">id</text>
+   <text x="104" y="589" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient10" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="9" y="80" fill="url(#Gradient10)" width="284" height="84" stroke="#00aaaa" stroke-width="1"/>
+   <text x="151" y="90" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">食用</text>
+   <line x1="9" x2="293" y1="95" y2="95" stroke="#00aaaa" stroke-width="1"/>
+   <text x="14" y="104" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">menu_id</text>
+   <text x="14" y="115" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">diet_plan_id</text>
+   <text x="14" y="126" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">state</text>
+   <text x="14" y="137" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">recipe_id</text>
+   <text x="82" y="104" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="110" y="104" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="110" y="115" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="110" y="126" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="110" y="137" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="243" y="104" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="243" y="115" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="243" y="126" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="243" y="137" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="9" x2="293" y1="143" y2="143" stroke="#00aaaa" stroke-width="1"/>
+   <text x="14" y="152" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">menu_id</text>
+   <text x="57" y="152" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+   <defs>
+      <linearGradient id="Gradient11" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b0ffff"/>
+      </linearGradient>
+   </defs>
+   <rect x="434" y="268" fill="url(#Gradient11)" width="279" height="96" stroke="#00aaaa" stroke-width="1"/>
+   <text x="573" y="278" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">通知</text>
+   <line x1="434" x2="713" y1="283" y2="283" stroke="#00aaaa" stroke-width="1"/>
+   <text x="439" y="292" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">message</text>
+   <text x="439" y="303" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">created_at</text>
+   <text x="439" y="314" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">is_read</text>
+   <text x="439" y="325" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">id</text>
+   <text x="439" y="336" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">user_id</text>
+   <text x="497" y="325" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;pi&gt;</text>
+   <text x="525" y="292" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Variable characters (1024)</text>
+   <text x="525" y="303" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Date &amp; Time</text>
+   <text x="525" y="314" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Boolean</text>
+   <text x="525" y="325" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Integer</text>
+   <text x="525" y="336" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="663" y="292" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="663" y="303" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="663" y="314" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <text x="663" y="325" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">&lt;M&gt;</text>
+   <text x="663" y="336" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;M&gt;</text>
+   <line x1="434" x2="713" y1="342" y2="342" stroke="#00aaaa" stroke-width="1"/>
+   <text x="439" y="351" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">id</text>
+   <text x="457" y="351" fill="#000000" font-size="8" font-family="'Arial Unicode MS','新宋体'">&lt;pi&gt;</text>
+</svg>
