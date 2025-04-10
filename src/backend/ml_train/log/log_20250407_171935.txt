@@ -1,0 +1,134 @@
+2025-04-07 17:19:35,928 - INFO - 读取数据集...
+2025-04-07 17:19:35,945 - INFO - 数据预处理...
+2025-04-07 17:19:35,945 - INFO - 数据集形状: (2401, 15)
+2025-04-07 17:19:35,945 - INFO - 数据集前5行:
+2025-04-07 17:19:35,946 - INFO -     seqn  Age     Sex  Marital  Income  ... UricAcid  BloodGlucose  HDL  Triglycerides  MetabolicSyndrome
+0  62161   22    Male   Single  8200.0  ...      4.9            92   41             84                  0
+1  62164   44  Female  Married  4500.0  ...      4.5            82   28             56                  0
+2  62169   21    Male   Single   800.0  ...      5.4           107   43             78                  0
+3  62172   43  Female   Single  2000.0  ...      5.0           104   73            141                  0
+4  62177   51    Male  Married     NaN  ...      5.0            95   43            126                  0
+
+[5 rows x 15 columns]
+2025-04-07 17:19:35,981 - INFO - 
+处理缺失值...
+2025-04-07 17:19:35,983 - INFO - 缺失值统计:
+seqn                   0
+Age                    0
+Sex                    0
+Marital              208
+Income               117
+Race                   0
+WaistCirc             85
+BMI                   26
+Albuminuria            0
+UrAlbCr                0
+UricAcid               0
+BloodGlucose           0
+HDL                    0
+Triglycerides          0
+MetabolicSyndrome      0
+dtype: int64
+2025-04-07 17:19:35,989 - INFO - 
+处理Income字段...
+2025-04-07 17:19:35,993 - INFO - Income分类统计:
+IncomeCategory
+Low     1281
+High     653
+Mid      467
+Name: count, dtype: int64
+2025-04-07 17:19:35,994 - INFO - 
+对分类特征进行编码...
+2025-04-07 17:19:35,997 - INFO - 
+特征工程 - 创建新特征...
+2025-04-07 17:19:36,003 - INFO - 
+特征选择...
+2025-04-07 17:19:36,005 - INFO - 特征列表: ['Age', 'Sex_Encoded', 'Marital_Encoded', 'IncomeCategory_Encoded', 'Race_Encoded', 'WaistCirc', 'BMI', 'Albuminuria', 'UrAlbCr', 'UricAcid', 'BloodGlucose', 'HDL', 'Triglycerides', 'WaistBMIRatio', 'GlucoseHDLRatio', 'TrigHDLRatio', 'AgeGroup']
+2025-04-07 17:19:36,005 - INFO - 
+数据标准化...
+2025-04-07 17:19:36,010 - INFO - 
+使用随机森林进行特征选择...
+2025-04-07 17:19:37,001 - INFO - 
+选择重要特征...
+2025-04-07 17:19:37,441 - INFO - 选择的重要特征: ['Age', 'WaistCirc', 'BMI', 'UrAlbCr', 'BloodGlucose', 'HDL', 'Triglycerides', 'WaistBMIRatio', 'GlucoseHDLRatio', 'TrigHDLRatio']
+2025-04-07 17:19:37,441 - INFO - 
+分割数据集...
+2025-04-07 17:19:37,446 - INFO - 训练集大小: (1920, 10), 测试集大小: (481, 10)
+2025-04-07 17:19:37,446 - INFO - 
+交叉验证评估不同模型...
+2025-04-07 17:19:39,006 - INFO - 随机森林 交叉验证准确率: 0.8620 ± 0.0260
+2025-04-07 17:19:41,169 - INFO - 梯度提升 交叉验证准确率: 0.8698 ± 0.0200
+2025-04-07 17:19:41,223 - INFO - 逻辑回归 交叉验证准确率: 0.8328 ± 0.0230
+2025-04-07 17:19:42,356 - INFO - 支持向量机 交叉验证准确率: 0.8490 ± 0.0166
+2025-04-07 17:19:42,492 - INFO - K近邻 交叉验证准确率: 0.8458 ± 0.0221
+2025-04-07 17:19:42,551 - INFO - 决策树 交叉验证准确率: 0.8234 ± 0.0113
+2025-04-07 17:19:42,563 - INFO - 朴素贝叶斯 交叉验证准确率: 0.8036 ± 0.0194
+2025-04-07 17:19:43,240 - INFO - AdaBoost 交叉验证准确率: 0.8667 ± 0.0153
+2025-04-07 17:19:44,099 - INFO - ExtraTrees 交叉验证准确率: 0.8536 ± 0.0214
+2025-04-07 17:19:44,099 - INFO - 
+最佳单一模型: 梯度提升
+2025-04-07 17:19:44,100 - INFO - 
+网格搜索优化超参数...
+2025-04-07 17:30:04,370 - INFO - 最佳参数: {'learning_rate': 0.01, 'max_depth': 3, 'min_samples_split': 2, 'n_estimators': 300}
+2025-04-07 17:30:04,371 - INFO - 最佳交叉验证得分: 0.8734
+2025-04-07 17:30:04,371 - INFO - 
+创建集成模型...
+2025-04-07 17:30:06,935 - INFO - 
+在测试集上评估模型...
+2025-04-07 17:30:07,021 - INFO - 
+最佳单一模型评估:
+2025-04-07 17:30:07,022 - INFO - 准确率: 0.8690
+2025-04-07 17:30:07,023 - INFO - 
+分类报告:
+2025-04-07 17:30:07,028 - INFO -               precision    recall  f1-score   support
+
+           0       0.90      0.91      0.90       316
+           1       0.81      0.80      0.81       165
+
+    accuracy                           0.87       481
+   macro avg       0.86      0.85      0.85       481
+weighted avg       0.87      0.87      0.87       481
+
+2025-04-07 17:30:07,029 - INFO - 
+混淆矩阵:
+2025-04-07 17:30:07,031 - INFO - [[286  30]
+ [ 33 132]]
+2025-04-07 17:30:07,032 - INFO - 
+集成模型评估:
+2025-04-07 17:30:07,033 - INFO - 准确率: 0.8399
+2025-04-07 17:30:07,033 - INFO - 
+分类报告:
+2025-04-07 17:30:07,040 - INFO -               precision    recall  f1-score   support
+
+           0       0.87      0.90      0.88       316
+           1       0.79      0.73      0.76       165
+
+    accuracy                           0.84       481
+   macro avg       0.83      0.81      0.82       481
+weighted avg       0.84      0.84      0.84       481
+
+2025-04-07 17:30:07,041 - INFO - 
+混淆矩阵:
+2025-04-07 17:30:07,042 - INFO - [[283  33]
+ [ 44 121]]
+2025-04-07 17:30:07,043 - INFO - 
+最终选择模型: 最佳单一模型
+2025-04-07 17:30:07,043 - INFO - 
+保存模型和特征相关信息...
+2025-04-07 17:30:07,071 - INFO - 
+可视化结果...
+2025-04-07 17:30:07,899 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,906 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,936 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,942 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,964 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,971 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,994 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:07,999 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:08,023 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:08,028 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:08,051 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:08,057 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-04-07 17:30:08,407 - INFO - 
+模型训练完成！可视化结果已保存到'plots'文件夹。
+2025-04-07 17:30:08,407 - INFO - 最终模型准确率: 0.8690

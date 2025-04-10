@@ -381,7 +381,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { ArrowLeft, Plus, Loading, InfoFilled } from '@element-plus/icons-vue';
 import http from '../utils/axios';
 import { marked } from 'marked';
@@ -677,10 +677,27 @@ const saveDietPlan = async () => {
 // 删除膳食计划
 const deleteDietPlan = async (plan) => {
   try {
+    // 添加确认对话框
+    await ElMessageBox.confirm(
+      `确定要删除 ${plan.diet_date} 的膳食计划吗？`,
+      '删除确认',
+      {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
+    );
+    
+    // 用户确认后执行删除操作
     await http.delete(`/api/diet_plans/delete_entire/${plan.diet_plan_id}/`);
     ElMessage.success('删除成功');
     await fetchDietPlans(selectedClient.value.client_id);
   } catch (error) {
+    if (error === 'cancel') {
+      // 用户取消删除
+      ElMessage.info('已取消删除');
+      return;
+    }
     console.error('删除失败:', error);
     ElMessage.error('删除失败');
   }

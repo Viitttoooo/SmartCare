@@ -4,7 +4,7 @@
 
 ## 数据集
 
-使用`Metabolic Syndrome.csv`数据集，该数据集包含以下特征：
+使用`Metabolic Syndrome.csv`数据集（https://www.kaggle.com/datasets/antimoni/metabolic-syndrome），该数据集包含以下特征：
 - 人口统计学特征：年龄、性别、婚姻状况、收入、种族
 - 健康指标：腰围、BMI、白蛋白尿、尿白蛋白肌酐比值、尿酸、血糖、高密度脂蛋白胆固醇、甘油三酯
 - 目标变量：MetabolicSyndrome（0或1）
