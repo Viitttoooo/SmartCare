@@ -150,7 +150,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 # session配置
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # 使用数据库存储 session
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'  # 使用数据库（db）存储 session
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2  # 会话过期时间（单位：秒）, 默认两周
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # 浏览器关闭时会话不会失效
 

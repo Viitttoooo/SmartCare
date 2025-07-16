@@ -1955,9 +1955,31 @@ def get_staff_schedule_certain(request, staff_id):
 def delete_staff_schedule(request, pk):
     schedule = StaffSchedules.objects.get(pk=pk)
     staff_id = schedule.staff_id
+    original_assigned_date = schedule.assigned_date
+    original_start_time = schedule.template.start_time
+    original_end_time = schedule.template.end_time
     schedule.delete()
     cache.delete(SCHEDULES_DATA)
     cache.delete(PER_SCHEDULES.format(staff_id))
+    # 查找员工在原排班日期和时间段内的所有未取消和未结束的预约
+    appointments_to_update = Appointments.objects.filter(
+        staff=schedule.staff,
+        schedule_date=original_assigned_date,
+        schedule_time__gte=original_start_time,
+        schedule_time__lt=original_end_time
+    ).exclude(state__in=["已取消", "已结束"])
+
+    count = appointments_to_update.count()
+    client_ids = list(appointments_to_update.values_list('client', flat=True).distinct().order_by('client'))
+
+    # 将这些预约的 staff 字段设为 null
+    appointments_to_update.update(staff=None)
+
+    if count:
+        cache.delete(APPOINTMENTS_DATA)
+        cache.delete(APPOINTMENTS)
+        for client_id in client_ids:
+            cache.delete(PER_APPOINTMENTS.format(client_id))
     return Response({'msg': 'delete success'}, status=status.HTTP_200_OK)
 
 

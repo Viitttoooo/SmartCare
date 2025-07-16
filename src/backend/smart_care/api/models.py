@@ -1,14 +1,6 @@
-# This is an auto-generated Django models module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each models has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from enum import Enum
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone
 
 
 class IncomeRange(Enum):
@@ -201,14 +193,6 @@ class Services(models.Model):
     duration = models.IntegerField(blank=True, null=True)
 
 
-# class ShiftRequirements(models.Model):
-#     requirement_id = models.AutoField(primary_key=True)
-#     template = models.ForeignKey('ShiftTemplates', models.RESTRICT)
-#     min_staff = models.CharField(max_length=255)
-#     valid_from = models.DateField()
-#     valid_to = models.DateField(blank=True, null=True)
-
-
 class ShiftTemplates(models.Model):
     template_id = models.AutoField(primary_key=True)
     shift_name = models.CharField(max_length=255)
@@ -226,10 +210,7 @@ class StaffSchedules(models.Model):
     shift_id = models.AutoField(primary_key=True)
     staff = models.ForeignKey(Staff, models.CASCADE)
     template = models.ForeignKey(ShiftTemplates, models.RESTRICT)
-    # week_num = models.IntegerField(blank=True, null=True)
     assigned_date = models.DateField()
-    # actual_start = models.DateTimeField()
-    # actual_end = models.DateTimeField()
 
     class Meta:
         unique_together = ('staff', 'assigned_date')
